@@ -39,14 +39,21 @@ createApp({
                 console.log(error);
               })
         },
-        removeTask(id){
-            const index = getIndex(id, this.tasks)
-            this.tasks.splice(index, 1);
+        removeTask(index){
+            const data = new FormData();
+            data.append("removeTask", index);
+            axios.post(this.apiUrl, data)
+            .then((response) => {
+                this.list = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
         },
-        todoInvert(id){
-            const index = getIndex(id, this.tasks)
-            this.tasks[index].done = !this.tasks[index].done
-        },
+        // todoInvert(id){
+        //     const index = getIndex(id, this.tasks)
+        //     this.tasks[index].done = !this.tasks[index].done
+        // },
         // getIndex(id){
         //     return this.tasks.findIndex((el) => el.id === id);
         // },
