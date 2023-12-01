@@ -1,5 +1,4 @@
 import {getIndex} from './utility.js';
-import {tasks} from './data.js';
 
 const {createApp} = Vue
 createApp({
@@ -7,7 +6,6 @@ createApp({
     data(){
         return {
             tasks: tasks,
-            lastId: 4,
             todoText: '',
             filterValue: '',
             audio: new Audio('audio/jingle-bells.mp3'),
@@ -18,7 +16,6 @@ createApp({
     methods: {
         addTask(){
             this.tasks.unshift({
-                id: ++this.lastId,
                 text: this.todoText,
                 done: false,
             });

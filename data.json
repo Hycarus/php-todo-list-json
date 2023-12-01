@@ -1,0 +1,18 @@
+[
+    {
+        "text": "Computer",
+        "done": false
+    }, 
+    {
+        "text": "Playstation",
+        "done": true
+    }, 
+    {
+        "text": "Iphone 14",
+        "done": false
+    },
+    {
+        "text": "T-shirt",
+        "done": true
+    }
+]
