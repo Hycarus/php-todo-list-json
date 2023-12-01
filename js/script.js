@@ -17,11 +17,27 @@ createApp({
     // contiene le funzioni e i metodi 
     methods: {
         addTask(){
-            this.tasks.unshift({
-                text: this.todoText,
-                done: false,
-            });
-            this.todoText = '';
+            // this.tasks.unshift({
+            //     text: this.todoText,
+            //     done: false,
+            // });
+            // this.todoText = '';
+            if(this.todoText == ''){
+                return;
+              }
+              console.log(this.todoText);
+        
+              const data = new FormData();
+              data.append("task", this.todoText);
+              
+              axios.post(this.apiUrl, data)
+              .then((response) => {
+                this.list = response.data;
+                console.log(response.data);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
         },
         removeTask(id){
             const index = getIndex(id, this.tasks)
@@ -53,9 +69,23 @@ createApp({
         //     this.audio.play();
         //     this.active = true;
         // },
+        readList(){
+            axios.get(this.apiUrl).then((response) =>{
+              // console.log(response.data);
+              this.list = response.data;
+      
+            })
+            .catch ((error) =>{
+              console.log(error);
+            })
+            .finally(() => {
+      
+            })
+          },
     },
     mounted(){
         // this.audio.play();
+        this.readList();
     },
     // contiene funzioni che possono essere richiamate solo se viene modificato un dato
     computed: {
