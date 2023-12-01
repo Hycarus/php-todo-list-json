@@ -17,11 +17,6 @@ createApp({
     // contiene le funzioni e i metodi 
     methods: {
         addTask(){
-            // this.tasks.unshift({
-            //     text: this.todoText,
-            //     done: false,
-            // });
-            // this.todoText = '';
             if(this.todoText == ''){
                 return;
               }
@@ -41,7 +36,7 @@ createApp({
         },
         removeTask(index){
             const data = new FormData();
-            data.append("removeTask", index);
+            data.append("removetask", index);
             axios.post(this.apiUrl, data)
             .then((response) => {
                 this.list = response.data;
@@ -50,13 +45,19 @@ createApp({
                 console.log(error);
             })
         },
-        // todoInvert(id){
-        //     const index = getIndex(id, this.tasks)
-        //     this.tasks[index].done = !this.tasks[index].done
-        // },
-        // getIndex(id){
-        //     return this.tasks.findIndex((el) => el.id === id);
-        // },
+        updateTask(index){
+            const data = new FormData();
+            data.append("updatetask", index);
+            axios.post(this.apiUrl, data)
+            .then((response) => {
+                console.log(response.data[index].done);
+                this.list[index].done = response.data[index].done;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        },
+        
         // filteredTasks(){
         //     return this.tasks.filter((task)=>{
         //         if(this.filterValue === '2' && !task.done){

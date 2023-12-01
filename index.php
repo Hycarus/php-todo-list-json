@@ -43,7 +43,7 @@
     <main>
       <ul class="list-group">
         <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element, index) in list" :key="index">
-          <span :class="{'done': element.done}" @click="todoInvert(index)">
+          <span :class="{'done': element.done}" @click="updateTask(index)">
             {{element.text}}
           </span>
           <i class="fa-solid fa-gifts fa-bounce" @click="removeTask(index)"></i>
