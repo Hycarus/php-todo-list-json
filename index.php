@@ -41,7 +41,7 @@
       </div>
     </header>
     <main>
-      <ul class="list-group">
+      <ul class="list-group" v-if="list.length > 0">
         <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element, index) in list" :key="index">
           <span :class="{'done': element.done}" @click="updateTask(index)">
             {{element.text}}
@@ -49,8 +49,8 @@
           <i class="fa-solid fa-gifts fa-bounce" @click="removeTask(index)"></i>
         </li>
       </ul>
-      <div>
-        <h3>Non hai task</h3>
+      <div v-else>
+        <h2 class="text-danger">Non hai task</h2>
       </div>
     </main>
   </div>
