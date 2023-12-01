@@ -42,7 +42,7 @@
     </header>
     <main>
       <ul class="list-group" v-if="list.length > 0">
-        <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element, index) in list" :key="index">
+        <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element, index) in filteredTasks()" :key="index">
           <span :class="{'done': element.done}" @click="updateTask(index)">
             {{element.text}}
           </span>

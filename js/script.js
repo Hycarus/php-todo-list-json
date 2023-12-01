@@ -1,4 +1,3 @@
-import {getIndex} from './utility.js';
 
 const {createApp} = Vue
 createApp({
@@ -33,6 +32,7 @@ createApp({
               .catch((error) => {
                 console.log(error);
               })
+            this.todoText = '';  
         },
         removeTask(index){
             const data = new FormData();
@@ -50,7 +50,7 @@ createApp({
             data.append("updatetask", index);
             axios.post(this.apiUrl, data)
             .then((response) => {
-                console.log(response.data[index].done);
+                console.log(response.data[index]);
                 this.list[index].done = response.data[index].done;
             })
             .catch((error) => {
@@ -58,17 +58,17 @@ createApp({
             })
         },
         
-        // filteredTasks(){
-        //     return this.tasks.filter((task)=>{
-        //         if(this.filterValue === '2' && !task.done){
-        //             return true;
-        //         } else if(this.filterValue === '1' && task.done){
-        //             return true;
-        //         } else if(this.filterValue === ''){
-        //             return true;
-        //         }
-        //     });
-        // },
+        filteredTasks(){
+            return this.list.filter((task)=>{
+                if(this.filterValue === '2' && !task.done){
+                    return true;
+                } else if(this.filterValue === '1' && task.done){
+                    return true;
+                } else if(this.filterValue === ''){
+                    return true;
+                }
+            });
+        },
         // stopMusic(){
         //     this.audio.pause();
         //     this.active = false;
@@ -96,9 +96,7 @@ createApp({
         this.readList();
     },
     // contiene funzioni che possono essere richiamate solo se viene modificato un dato
-    computed: {
-
-    },
+    created(){}
 }).mount('#app')
 
 
