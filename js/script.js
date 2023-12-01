@@ -5,10 +5,12 @@ createApp({
     // contiene tutti i dati / le variabili 
     data(){
         return {
-            tasks: tasks,
+            apiUrl: 'server.php',
+            // tasks: tasks,
+            list: [],
             todoText: '',
             filterValue: '',
-            audio: new Audio('audio/jingle-bells.mp3'),
+            // audio: new Audio('../audio/jingle-bells.mp3'),
             active: true,
         }
     },
@@ -32,28 +34,28 @@ createApp({
         // getIndex(id){
         //     return this.tasks.findIndex((el) => el.id === id);
         // },
-        filteredTasks(){
-            return this.tasks.filter((task)=>{
-                if(this.filterValue === '2' && !task.done){
-                    return true;
-                } else if(this.filterValue === '1' && task.done){
-                    return true;
-                } else if(this.filterValue === ''){
-                    return true;
-                }
-            });
-        },
-        stopMusic(){
-            this.audio.pause();
-            this.active = false;
-        },
-        playMusic(){
-            this.audio.play();
-            this.active = true;
-        },
+        // filteredTasks(){
+        //     return this.tasks.filter((task)=>{
+        //         if(this.filterValue === '2' && !task.done){
+        //             return true;
+        //         } else if(this.filterValue === '1' && task.done){
+        //             return true;
+        //         } else if(this.filterValue === ''){
+        //             return true;
+        //         }
+        //     });
+        // },
+        // stopMusic(){
+        //     this.audio.pause();
+        //     this.active = false;
+        // },
+        // playMusic(){
+        //     this.audio.play();
+        //     this.active = true;
+        // },
     },
     mounted(){
-        this.audio.play();
+        // this.audio.play();
     },
     // contiene funzioni che possono essere richiamate solo se viene modificato un dato
     computed: {

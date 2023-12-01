@@ -19,8 +19,8 @@
 
   <div id="app" class="container">
     <header class="text-center p-3">
-      <i class="fa-solid fa-volume-high position-absolute top-0 end-0 m-4 text-light" @click="stopMusic" v-if="active === true"></i>
-      <i class="fa-solid fa-volume-xmark position-absolute top-0 end-0 m-4 text-light" v-else @click="playMusic"></i>
+      <i class="fa-solid fa-volume-high position-absolute top-0 end-0 m-4 text-light" v-if="active === true"></i>
+      <i class="fa-solid fa-volume-xmark position-absolute top-0 end-0 m-4 text-light" v-else></i>
       <img src="img/Logo.png" alt="logo" id="logo">
       <div class="d-flex justify-content-center align-items-center">
         <img src="img/present.png" alt="present" class="present">
@@ -40,15 +40,15 @@
       </div>
     </header>
     <main>
-      <ul class="list-group" v-if="tasks.length > 0">
-        <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element) in filteredTasks()" :key="element.id">
-          <span :class="{'done': element.done}" @click="todoInvert(element.id)">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action d-flex justify-content-between opacity-75" v-for="(element, index) in list" :key="index">
+          <span :class="{'done': element.done}" @click="todoInvert(element.index)">
             {{element.text}}
           </span>
-          <i class="fa-solid fa-gifts fa-bounce" @click="removeTask(element.id)"></i>
+          <i class="fa-solid fa-gifts fa-bounce" @click="removeTask(element.index)"></i>
         </li>
       </ul>
-      <div v-else>
+      <div>
         <h3>Non hai task</h3>
       </div>
     </main>
