@@ -29,7 +29,7 @@
         <img src="img/present.png" alt="present" class="present">
       </div>
       <div class="my-3">
-        <input type="text" class="form-control w-50 d-inline-block mx-3" v-model="todoText" :keyup.enter="addTask">
+        <input type="text" class="form-control w-50 d-inline-block mx-3" v-model="todoText" @keyup.enter="addTask">
         <button class="btn btn-danger" @click="addTask">
           Add task
         </button>
